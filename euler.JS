@@ -4,18 +4,34 @@ The sum of these multiples is 23.
 
 Find the sum of all the multiples of 3 or 5 below 1000.
 */
-alert("Loaded Euler JS");
-a=3;
-b=5;
-n=1000;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum of Multiples of 3 or 5</title>
+    <script>
+        function calculateSum() {
+            let sum = 0;
+            const n = 1000;
 
-let sum = 0;
-let n = 1000;
+            for (let i = 0; i < n; i++) {
+                if (i % 3 === 0 || i % 5 === 0) {
+                    sum += i;
+                }
+            }
 
-for (let i = 0; i < n; i++) {
-    if (i % 3 === 0 || i % 5 === 0) {
-        sum += i;
-    }
-}
+            document.getElementById("result").innerText = "The sum
+
 
 alert("The sum of all multiples of 3 or 5 below 1000 is: " + sum);
+}
+}
+
+document.getElementById("result").innerText = "The sum of all multiples of 3 or 5 below 1000 is: " + sum;
+}
+</script>
+</head>
+<body onload="calculateSum()">
+<h1>Project Euler: Sum of Multiples of 3 or 5</h1>
+<p id="result"></p>
+</body>
+</html>
