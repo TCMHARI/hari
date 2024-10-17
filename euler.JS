@@ -4,7 +4,6 @@ The sum of these multiples is 23.
 
 Find the sum of all the multiples of 3 or 5 below 1000.
 */
-<!DOCTYPE html>
 <html>
 <head>
     <title>Sum of Multiples of 3 or 5</title>
@@ -19,19 +18,12 @@ Find the sum of all the multiples of 3 or 5 below 1000.
                 }
             }
 
-            document.getElementById("result").innerText = "The sum
-
-
-alert("The sum of all multiples of 3 or 5 below 1000 is: " + sum);
-}
-}
-
-document.getElementById("result").innerText = "The sum of all multiples of 3 or 5 below 1000 is: " + sum;
-}
-</script>
+            document.getElementById("result").innerText = "The sum of all multiples of 3 or 5 below 1000 is: " + sum;
+        }
+    </script>
 </head>
 <body onload="calculateSum()">
-<h1>Project Euler: Sum of Multiples of 3 or 5</h1>
-<p id="result"></p>
+    <h1>Project Euler: Sum of Multiples of 3 or 5</h1>
+    <p id="result"></p>
 </body>
 </html>
