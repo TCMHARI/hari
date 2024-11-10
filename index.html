@@ -1,13 +1,41 @@
-<HTML></HTML>
-    <head>
-        <script src="script.js"></script>
-        <script src="euler.js">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>Gym Membership Management</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <h1>Gym Membership Management</h1>
+      <!-- Form for adding/updating a member -->
+      <div>
+        <h3>Add/Edit Member</h3>
+        <form id="memberForm" onsubmit="return addOrUpdateMember()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required><br>
 
-        </script>
-    </head>
-    <body>
-        <p>
-            Hello World!
-        </p>
-    </body>
-</HTML>
+            <label for="age">Age:</label>
+            <input type="number" id="age" required><br>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required><br>
+
+            <label for="membershipType">Membership Type:</label>
+            <select id="membershipType" required>
+                <option value="" disabled selected>Select Membership Type</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Yearly">Yearly</option>
+            </select><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
