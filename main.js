@@ -41,3 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Please enter a valid email address.");
             return false;
         }
+        if (!phoneRegex.test(phone)) {
+            alert("Please enter a valid phone number with 10-15 digits.");
+            return false;
+        }
