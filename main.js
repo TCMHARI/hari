@@ -32,4 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let phone = document.getElementById('phone').value;
         let email = document.getElementById('email').value;
         let membershipType = document.getElementById('membershipType').value;
-    }
+
+        if (!name || !age || !gender || !phone || !email || !membershipType) {
+            alert("All fields are required.");
+            return false;
+        }
