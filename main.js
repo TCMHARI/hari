@@ -20,3 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     request.onerror = function (event) {
         console.error("Database error: ", event.target.errorCode);
     };
+
+    
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
