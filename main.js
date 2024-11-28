@@ -24,3 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let phoneRegex = /^\+?\d{10,15}$/;
+
+    function addOrUpdateMember (){
+        let name = document.getElementById('name').value;
+        let age = document.getElementById('age').value;
+        let gender = document.getElementById('gender').value;
+        let phone = document.getElementById('phone').value;
+        let email = document.getElementById('email').value;
+        let membershipType = document.getElementById('membershipType').value;
+    }
