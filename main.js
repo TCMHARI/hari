@@ -23,3 +23,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let phoneRegex = /^\+?\d{10,15}$/;
