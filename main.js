@@ -60,4 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 member.membershipType = membershipType;
                 store.put(member);
                 editMemberId = null;
-            };
+             };
+            } else {
+                let newMember = {
+                    name: name,
+                    age: parseInt(age),
+                    gender: gender,
+                    phone: phone,
+                    email: email,
+                    membershipType: membershipType
+                };
+                store.add(newMember);
+            }
