@@ -45,3 +45,19 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Please enter a valid phone number with 10-15 digits.");
             return false;
         }
+        let transaction = db.transaction(["members"], "readwrite");
+        let store = transaction.objectStore("members");
+
+        if (editMemberId !== null) {
+            let getRequest = store.get(editMemberId);
+            getRequest.onsuccess = function () {
+                let member = getRequest.result;
+                member.name = name;
+                member.age = parseInt(age);
+                member.gender = gender;
+                member.phone = phone;
+                member.email = email;
+                member.membershipType = membershipType;
+                store.put(member);
+                editMemberId = null;
+            };
