@@ -1,6 +1,13 @@
 const apiUrl = 'http://localhost:3000/api/members';
 let editMemberId = null;
-let db;
+
+function fetchMembers() {
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayMembers(data); // Call the new display function
+        });
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     let request = indexedDB.open("memberDatabase", 1);
