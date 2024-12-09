@@ -47,3 +47,17 @@ app.put('/api/members/:id', async (req, res) => {
     const updatedMember = await updateMember(req.params.id, req.body);
     res.status(200).json(updatedMember);
 });
+
+// to delete a member
+app.delete('/api/members/:id', async (req, res) => {
+    const deletedMember = await deleteMember(req.params.id);
+    res.status(200).json(deletedMember);
+});
+
+// to start the server
+app.listen(PORT, async () => {
+    await initDatabase(); // Initialize the database
+    console.log(`Server running on http://localhost:${PORT}`);
+});
+
+export default app;
