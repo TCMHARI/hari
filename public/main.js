@@ -1,3 +1,4 @@
+const apiUrl = 'http://localhost:3000/api/members';
 let editMemberId = null;
 let db;
 
