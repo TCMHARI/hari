@@ -31,9 +31,6 @@ function displayMembers(members) {
         membersList.appendChild(memberItem);
     });
 }
-    
-    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    let phoneRegex = /^\+?\d{10,15}$/;
 
     function addOrUpdateMember (){
         let name = document.getElementById('name').value;
@@ -42,43 +39,44 @@ function displayMembers(members) {
         let phone = document.getElementById('phone').value;
         let email = document.getElementById('email').value;
         let membershipType = document.getElementById('membershipType').value;
-
-        if (!name || !age || !gender || !phone || !email || !membershipType) {
-            alert("All fields are required.");
-            return false;
+        let newMember = {
+            name: name,
+            age: age,
+            gender: gender,
+            phone: phone,
+            email: email,
+            membershipType: membershipType,
+        };
+    
+        if (editingMemberId) {
+            // If editing an existing member, send PUT request
+            fetch(`${apiUrl}/${editingMemberId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newMember),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Member updated:', data);
+                    editingMemberId = null; // Clear the editing ID
+                    clearForm(); // Clear the form after update
+                    fetchMembers(); // Refresh the member list
+                });
+        } else {
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newMember),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Member added:', data);
+                    clearForm(); // Clear the form after adding
+                    fetchMembers(); // Refresh the member list
+                });
         }
-        if (!emailRegex.test(email)) {
-            alert("Please enter a valid email address.");
-            return false;
-        }
-        if (!phoneRegex.test(phone)) {
-            alert("Please enter a valid phone number with 10-15 digits.");
-            return false;
-        }
-        let transaction = db.transaction(["members"], "readwrite");
-        let store = transaction.objectStore("members");
-
-        if (editMemberId !== null) {
-            let getRequest = store.get(editMemberId);
-            getRequest.onsuccess = function () {
-                let member = getRequest.result;
-                member.name = name;
-                member.age = parseInt(age);
-                member.gender = gender;
-                member.phone = phone;
-                member.email = email;
-                member.membershipType = membershipType;
-                store.put(member);
-                editMemberId = null;
-             };
-            } else {
-                let newMember = {
-                    name: name,
-                    age: parseInt(age),
-                    gender: gender,
-                    phone: phone,
-                    email: email,
-                    membershipType: membershipType
-                };
-                store.add(newMember);
-            }
+    }
