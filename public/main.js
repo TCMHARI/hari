@@ -132,3 +132,8 @@ window.addOrUpdateMember = addOrUpdateMember;
 window.editMember = editMember;
 window.deleteMember = deleteMember;
 window.searchMembers = searchMembers; // Make searchMembers globally accessible
+
+
+window.onload = () => {
+    fetchMembers(); // Load the members when the page is loaded
+};
