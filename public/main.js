@@ -88,3 +88,17 @@ function displayMembers(members) {
         document.getElementById('email').value = '';
         document.getElementById('membershipType').value = '';
     }
+    function editMember(id) {
+        fetch(`${apiUrl}/${id}`)
+            .then(response => response.json())
+            .then(member => {
+                document.getElementById('name').value = member.name;
+                document.getElementById('age').value = member.age;
+                document.getElementById('gender').value = member.gender;
+                document.getElementById('phone').value = member.phone;
+                document.getElementById('email').value = member.email;
+                document.getElementById('membershipType').value = member.membershipType;
+    
+                editingMemberId = id; // Set the ID of the member being edited
+            });
+    }
