@@ -113,4 +113,16 @@ function displayMembers(members) {
                 fetchMembers(); // Refresh the member list
             });
     }
-    
+    function searchMembers() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const filteredMembers = data.filter(member => 
+                    member.name.toLowerCase().includes(searchInput) || 
+                    member.email.toLowerCase().includes(searchInput) ||
+                    member.phone.includes(searchInput)
+                );
+                displayMembers(filteredMembers); // Display filtered members
+            });
+    }
