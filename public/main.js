@@ -102,3 +102,15 @@ function displayMembers(members) {
                 editingMemberId = id; // Set the ID of the member being edited
             });
     }
+
+    function deleteMember(id) {
+        fetch(`${apiUrl}/${id}`, {
+            method: 'DELETE',
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Member deleted:', data);
+                fetchMembers(); // Refresh the member list
+            });
+    }
+    
