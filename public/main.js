@@ -80,3 +80,11 @@ function displayMembers(members) {
                 });
         }
     }
+    function clearForm() {
+        document.getElementById('name').value = '';
+        document.getElementById('age').value = '';
+        document.getElementById('gender').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('membershipType').value = '';
+    }
