@@ -126,3 +126,9 @@ function displayMembers(members) {
                 displayMembers(filteredMembers); // Display filtered members
             });
     }
+    
+window.fetchMembers = fetchMembers;
+window.addOrUpdateMember = addOrUpdateMember;
+window.editMember = editMember;
+window.deleteMember = deleteMember;
+window.searchMembers = searchMembers; // Make searchMembers globally accessible
