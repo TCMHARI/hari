@@ -9,26 +9,28 @@ function fetchMembers() {
         });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    let request = indexedDB.open("memberDatabase", 1);
+function displayMembers(members) {
+    let membersList = document.getElementById('membersList');
+    membersList.innerHTML = ''; // Clear existing members
 
-    request.onupgradeneeded = function (event) {
-        db = event.target.result;
-        if (!db.objectStoreNames.contains("members")) {
-            db.createObjectStore("members", { keyPath: "id", autoIncrement: true });
-        }
-    };
-
-    request.onsuccess = function (event) {
-        db = event.target.result;
-        console.log("Database opened successfully");
-        renderMembers();
-    };
-
-    request.onerror = function (event) {
-        console.error("Database error: ", event.target.errorCode);
-    };
-
+    members.forEach(member => {
+        let memberItem = document.createElement('div');
+        memberItem.innerHTML = `
+            <p>
+                <strong>Name:</strong> ${member.name}<br />
+                <strong>Age:</strong> ${member.age}<br />
+                <strong>Gender:</strong> ${member.gender}<br />
+                <strong>Phone:</strong> ${member.phone}<br />
+                <strong>Email:</strong> ${member.email}<br />
+                <strong>Membership Type:</strong> ${member.membershipType}<br />
+                <button onclick="editMember(${member.id})">Edit</button>
+                <button onclick="deleteMember(${member.id})">Delete</button>
+            </p>
+            <hr />
+        `;
+        membersList.appendChild(memberItem);
+    });
+}
     
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let phoneRegex = /^\+?\d{10,15}$/;
