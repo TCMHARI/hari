@@ -68,3 +68,15 @@ describe('Members API', () => {
                 done();
             });
     });
+    it('should return 404 for a member that does not exist', (done) => {
+        chai.request(app)
+            .get('/api/members/9999') // Assuming 9999 is non-existent
+            .end((err, res) => {
+                res.should.have.status(404);
+                res.body.should.have.property('message').eql('Member not found');
+                done();
+            });
+    });
+
+});
+
