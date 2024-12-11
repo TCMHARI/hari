@@ -49,3 +49,22 @@ describe('Members API', () => {
                 done();
             });
     });
+    it('should UPDATE a member given the ID', (done) => {
+        const updatedMember = {
+            name: "Jane Smith",
+            age: 32,
+            gender: "Female",
+            phone: "1234567890",
+            email: "jane.smith@user.com",
+            membershipType: "Monthly"
+        };
+        chai.request(app)
+            .put(`/api/members/${memberId}`)
+            .send(updatedMember)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('name').eql('Jane Smith');
+                done();
+            });
+    });
