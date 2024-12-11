@@ -1,6 +1,7 @@
 const apiUrl = 'http://localhost:3000/api/members';
-let editMemberId = null;
+let editingMemberId = null; // Global variable to track the current member being edited
 
+// to fetch and display all members
 function fetchMembers() {
     fetch(apiUrl)
         .then(response => response.json())
@@ -9,6 +10,7 @@ function fetchMembers() {
         });
 }
 
+// to display members in the DOM style
 function displayMembers(members) {
     let membersList = document.getElementById('membersList');
     membersList.innerHTML = ''; // Clear existing members
@@ -31,7 +33,6 @@ function displayMembers(members) {
         membersList.appendChild(memberItem);
     });
 }
-
     function addOrUpdateMember (){
         let name = document.getElementById('name').value;
         let age = document.getElementById('age').value;
