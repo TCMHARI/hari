@@ -39,3 +39,13 @@ describe('Members API', () => {
                 done();
             });
     });
+    it('should GET a member by the given ID', (done) => {
+        chai.request(app)
+            .get(`/api/members/${memberId}`)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('id').eql(memberId);
+                done();
+            });
+    });
