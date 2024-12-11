@@ -26,7 +26,7 @@ similarities with other work.
 2. Extract the software file in a folder
 3. Open the folder in Visual Studio Code 
 4. In the Visual Studio Code open terminal
-5. In the terminal go to the software directory by writting 'cd gym-membership-management'
+5. In the terminal go to the software directory by writting 'cd hari-main'
 6. Then write 'npm install'
 7. After completion write 'node src/index.js'
 8. Then 'hold ctrl + left click on the link', the website will open in the browser
