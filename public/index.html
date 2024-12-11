@@ -12,38 +12,42 @@
 <body>
     <h1>Gym Membership Management</h1>
       <!-- Form for adding/updating a member -->
-      <div>
+    
+    <div>
         <h3>Add/Edit Member</h3>
-        <form id="memberForm" onsubmit="return addOrUpdateMember()">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" /><br />
 
-            <label for="age">Age:</label>
-            <input type="number" id="age" required><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" /><br />
 
-            <label for="gender">Gender:</label>
+        <label for="gender">Gender:</label>
             <select id="gender" required>
                 <option value="" disabled selected>Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select><br>
 
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" required><br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" /><br />
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" /><br />
 
-            <label for="membershipType">Membership Type:</label>
-            <select id="membershipType" required>
-                <option value="" disabled selected>Select Membership Type</option>
-                <option value="Monthly">Monthly</option>
-                <option value="Yearly">Yearly</option>
-            </select><br>
+        <label for="membershipType">Membership Type:</label>
+        <select id="membershipType" required>
+            <option value="" disabled selected>Select Membership Type</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Yearly">Yearly</option>
+        </select><br>
 
-            <button type="submit">Submit</button>
-        </form>
+        <button onclick="addOrUpdateMember()">Submit</button>
     </div>
+
+ 
+    <h3>Members List</h3>
+    <input type="text" id="searchInput" placeholder="Search members..." onkeyup="searchMembers()"/>
+    <div id="membersList"></div>
 
     <script src="main.js"></script>
 </body>
